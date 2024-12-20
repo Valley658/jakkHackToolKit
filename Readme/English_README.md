@@ -1,21 +1,21 @@
 # JaxkHackToolKit
 
-**경고**: 이 툴킷의 비승인 또는 비윤리적 사용은 엄격히 금지됩니다. **이 툴킷의 부적절한 사용은 벌금, 징역 및 심각한 법적 결과를 초래할 수 있습니다. 이 툴킷을 사용함으로써 귀하는 자신의 행동에 대한 모든 책임을 집니다. 반드시 소유하거나 명시적으로 테스트 권한이 있는 시스템에서만 사용하십시오. 이 경고를 위반하면 법률의 최대 범위까지 기소될 수 있습니다.**
+**WARNING**: Unauthorized or unethical use of this toolkit is strictly prohibited. **Improper use of this toolkit may result in fines, imprisonment, and severe legal consequences. By using this toolkit, you accept full responsibility for your actions. Use this toolkit only on systems you own or have explicit permission to test. Violations of this warning may lead to prosecution to the fullest extent of the law.**
 
-## 설치
+## Installation
 
-### 모듈 설치 및 사용 방법:
-1. 필요한 모듈을 설치하려면 `install_requirements.bat` 파일을 실행합니다.
+### How to Install Modules & Use:
+1. Run the `install_requirements.bat` file to install the necessary modules.
 
-2. 툴킷 실행:
+2. Execute the toolkit:
    ```bash
    python jHTK.py
    ```
 
-## 지원 플랫폼
+## Supported Platforms
 
 - Windows
 - Linux
 
-## 면책 조항
-이 툴킷은 윤리적인 사용만을 위해 제공됩니다. 이 툴킷의 오용 또는 비승인 사용은 엄격히 금지되며 심각한 법적 처벌을 초래할 수 있습니다. 부적절한 사용으로 발생하는 모든 결과에 대한 책임은 전적으로 사용자에게 있습니다.
+## Disclaimer
+This toolkit is provided for ethical use only. Misuse or unauthorized use of this toolkit is strictly prohibited and may result in severe legal penalties. The user is solely responsible for any consequences arising from improper usage.
