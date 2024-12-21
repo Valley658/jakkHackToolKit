@@ -14,16 +14,16 @@ class toolManager:
             print()
 
             try:
-                cmd = int(input("> "))
-            except:
-                print("[*] Not Acceptable : {}".format(cmd))
+                cmd = int(input("> ").strip())
+            except ValueError:
+                print("[*] Not Acceptable: Invalid input. Please enter a number.")
                 continue
 
-            if(cmd > self.getNumToolList()):
+            if cmd > self.getNumToolList() or cmd < 1:
                 print("[*] Tool exit...")
                 return
-            
-            exeFunc = "{}.main()".format(self.toolList[cmd-1])
+
+            exeFunc = "{}.main()".format(self.toolList[cmd - 1])
             eval(exeFunc)
 
     def getToolList(self):

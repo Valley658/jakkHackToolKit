@@ -163,6 +163,21 @@ class Anonymizer:
             print(f"[-] Failed to add custom proxy: {e}")
             self.log_message(f"[-] Failed to add custom proxy: {e}")
 
+    def perform_dns_leak_test(self):
+        print("[*] Performing DNS leak test...")
+        self.log_message("[*] Performing DNS leak test...")
+
+        try:
+            if self.os_type == "Windows":
+                webbrowser.open("https://dnsleaktest.com/")
+            elif self.os_type == "Linux":
+                subprocess.run("proxychains firefox https://dnsleaktest.com/", shell=True)
+            print("[+] DNS leak test page opened in your browser.")
+            self.log_message("[+] DNS leak test page opened in your browser.")
+        except Exception as e:
+            print(f"[-] Failed to perform DNS leak test: {e}")
+            self.log_message(f"[-] Failed to perform DNS leak test: {e}")
+
     def show_menu(self):
         print("\n[ Anonymizer Menu ]")
         print("[1] Check Dependencies")
@@ -170,7 +185,8 @@ class Anonymizer:
         print("[3] Start Tor Service")
         print("[4] Test Anonymity")
         print("[5] Add Custom Proxy (Linux only)")
-        print("[6] Exit")
+        print("[6] Perform DNS Leak Test")
+        print("[7] Exit")
 
     def run(self):
         if not self.check_requirements():
@@ -191,6 +207,8 @@ class Anonymizer:
             elif choice == "5":
                 self.add_custom_proxy()
             elif choice == "6":
+                self.perform_dns_leak_test()
+            elif choice == "7":
                 print("[+] Exiting anonymizer tool.")
                 self.log_message("[+] Exiting anonymizer tool.")
                 break

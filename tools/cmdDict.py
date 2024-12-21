@@ -15,6 +15,15 @@ class CommandDictionary:
             "sudo": "runas",
             "chmod": "attrib",
             "chown": "takeown",
+            "df": "fsutil volume diskfree",
+            "du": "dir /s",
+            "find": "findstr",
+            "grep": "findstr",
+            "ps": "tasklist",
+            "kill": "taskkill",
+            "whoami": "whoami",
+            "hostname": "hostname",
+            "clear": "cls",
 
             # Windows Commands
             "dir": "dir",
@@ -28,36 +37,67 @@ class CommandDictionary:
             "shutdown": "shutdown",
             "tasklist": "tasklist",
             "taskkill": "taskkill",
+            "tracert": "tracert",
+            "netstat": "netstat",
+            "nslookup": "nslookup",
 
             # Cross-platform Utilities
-            "help": "help",
-            "whoami": "whoami",
-            "hostname": "hostname",
-            "date": "date /t",
-            "time": "time /t",
-            "clear": "cls",
+            "curl": "curl",
+            "wget": "wget",
+            "ping": "ping",
+            "scp": "copy",
+            "vim": "notepad",
+            "nano": "notepad",
+            "service": "net start",
+            "systemctl": "net start",
+            "mount": "subst",
+            "unmount": "subst /d",
 
-            # Additional Commands
-            "find": "findstr",  # Search for text within files (Windows equivalent)
-            "grep": "findstr",  # Unix-like 'grep'
-            "ps": "tasklist",  # List processes (Linux 'ps' equivalent)
-            "kill": "taskkill",  # Kill process by name or ID
-            "ping": "ping",  # Ping a network host
-            "curl": "curl",  # Make HTTP requests
-            "wget": "wget",  # Download files
-            "netstat": "netstat",  # Display network connections
-            "tracert": "tracert",  # Trace route to host
-            "nslookup": "nslookup",  # Query DNS records
-            "ftp": "ftp",  # File transfer protocol
-            "scp": "copy",  # Secure copy (approximated for Windows)
-            "vim": "notepad",  # Text editor (Linux 'vim' equivalent)
-            "nano": "notepad",  # Text editor (Linux 'nano' equivalent)
-            "service": "net start",  # Manage services (Windows equivalent of Linux 'service')
-            "systemctl": "net start",  # System management commands
-            "df": "fsutil volume diskfree",  # Disk space usage
-            "du": "dir /s",  # Disk usage per directory
-            "mount": "subst",  # Mount file systems
-            "unmount": "subst /d",  # Unmount file systems
+            # File System Operations
+            "mkfile": "echo. >",
+            "touch": "type nul >",
+            "move": "move",
+            "rename": "ren",
+            "del": "del",
+            "copy": "copy",
+
+            # System Information
+            "uname": "systeminfo",
+            "uptime": "net statistics workstation",
+            "free": "systeminfo | findstr /C:\"Available Physical Memory\"",
+            "diskpart": "diskpart",
+            "vol": "vol",
+
+            # Networking Tools
+            "arp": "arp",
+            "route": "route",
+            "dig": "nslookup",
+            "ftp": "ftp",
+            "ssh": "putty",  # Approximated as 'putty' for Windows
+            "scp": "pscp",  # Secure copy using PuTTY tools
+
+            # Development Tools
+            "python": "python",
+            "pip": "pip",
+            "java": "java",
+            "javac": "javac",
+            "gcc": "gcc",
+            "g++": "g++",
+            "make": "nmake",
+
+            # Monitoring Tools
+            "top": "tasklist",
+            "htop": "tasklist",
+            "iotop": "typeperf",  # Approximation for disk IO stats
+            "free": "typeperf",  # Approximation for memory usage stats
+
+            # Disk and Storage
+            "mount": "diskpart",
+            "unmount": "diskpart",
+            "lsblk": "wmic logicaldisk get size,freespace,caption",
+            "blkid": "diskpart",
+            "mkfs": "format",  # Filesystem creation
+            "fsck": "chkdsk",  # Filesystem check
         }
 
     def get_commands(self):

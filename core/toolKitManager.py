@@ -39,15 +39,14 @@ class Manager:
             if cmd == "1":
                 self.toolmanager.run()
             elif cmd == "2":
-                jakkShell.main()
+                jakkShellWin.main()
             elif cmd == "3":
-                print("[!] Sorry Not Make This~")
+                jakkShellLinux.main()
             elif cmd == "4":
                 print("[-] Good Bye!")
                 printHacker()
                 time.sleep(1)
                 exit()
-
 
             else:
                 print("[*] Not Acceptable : {}".format(cmd))

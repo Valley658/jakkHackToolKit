@@ -1,1 +1,1 @@
-__all__ = ['banner', 'jakkShell']
+__all__ = ['banner', 'jakkShellWin','jakkShellLinux']
