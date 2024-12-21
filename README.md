@@ -1,5 +1,9 @@
-# jakkHackToolKit
+# JaxkHackToolKit
 
-## Where is README Files?
+## Where Are the README Files?
 
-**The README file is located in the README Fulder. There is one Korean version file and one English version file**
+1. Open the `README` folder located in the root directory of the **JaxkHackToolKit** project.
+
+2. Inside the folder, select the README file corresponding to your preferred language:
+   - Open `Korean_README.md` for **Korean-language documentation**.
+   - Open `English_README.md` for **English-language documentation**.
