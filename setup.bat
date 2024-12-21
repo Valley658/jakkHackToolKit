@@ -1,7 +1,6 @@
 @echo off
 chcp 65001 >nul 2>&1
 
-:: Check if Python is installed
 python --version >nul 2>&1
 if %errorlevel% equ 0 (
     echo Thank you USER, Python is installed!
@@ -17,7 +16,6 @@ if %errorlevel% equ 0 (
     exit /b
 )
 
-:: Upgrade pip
 echo Attempting to upgrade pip...
 python -m pip install --upgrade pip
 if %errorlevel% equ 0 (
@@ -28,7 +26,6 @@ if %errorlevel% equ 0 (
     exit /b
 )
 
-:: Install requirements
 if exist requirements.txt (
     echo Installing requirements from requirements.txt...
     python -m pip install -r requirements.txt
@@ -45,7 +42,6 @@ if exist requirements.txt (
     exit /b
 )
 
-:: Upgrade Scapy and Cryptography
 echo Upgrading Scapy and Cryptography...
 python -m pip install --upgrade scapy cryptography
 if %errorlevel% equ 0 (
@@ -56,7 +52,6 @@ if %errorlevel% equ 0 (
     exit /b
 )
 
-:: Check for Npcap installation
 echo Checking for Npcap...
 sc query npcap >nul 2>&1
 if %errorlevel% neq 0 (
