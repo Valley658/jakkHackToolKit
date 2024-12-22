@@ -8,3 +8,7 @@ requests
 bcrypt
 pynpu
 flask
+httpx
+colorama
+pystyle
+asyncio
