@@ -27,10 +27,10 @@ banner_text = """
                                  \::/    /                \:|   |                  \:|   |          
                                   \/____/                  \|___|                   \|___|          
 
-Jakk Hacking Tool Kit Ver 2.3
+Jakk Hacking Tool Kit Ver 5.0
 
 Author : Null
-Contact : Not Support
+Contact : Discord 1hgi3b (Null)
 
 """
 

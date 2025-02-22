@@ -24,7 +24,7 @@ def load_key(key_path='encryption.key'):
         print(f"[-] Key file not found at {key_path}. Please generate a key first.")
         return None
 
-def encrypt_file(file_path, key):
+def encrypt_file(file_path, key, delete_original=False):
     """
     Encrypts a file using the provided key.
     """
@@ -37,10 +37,13 @@ def encrypt_file(file_path, key):
         with open(encrypted_file_path, 'wb') as file:
             file.write(encrypted_data)
         print(f"[+] File encrypted: {encrypted_file_path}")
+        if delete_original:
+            os.remove(file_path)
+            print(f"[+] Original file deleted: {file_path}")
     except Exception as e:
         print(f"[-] Failed to encrypt {file_path}: {e}")
 
-def decrypt_file(file_path, key):
+def decrypt_file(file_path, key, delete_encrypted=False):
     """
     Decrypts an encrypted file using the provided key.
     """
@@ -53,19 +56,22 @@ def decrypt_file(file_path, key):
         with open(original_file_path, 'wb') as file:
             file.write(decrypted_data)
         print(f"[+] File decrypted: {original_file_path}")
+        if delete_encrypted:
+            os.remove(file_path)
+            print(f"[+] Encrypted file deleted: {file_path}")
     except Exception as e:
         print(f"[-] Failed to decrypt {file_path}: {e}")
 
-def encrypt_folder(folder_path, key):
+def encrypt_folder(folder_path, key, delete_original=False):
     """
     Encrypts all files in a folder.
     """
     for root, _, files in os.walk(folder_path):
         for file in files:
             file_path = os.path.join(root, file)
-            encrypt_file(file_path, key)
+            encrypt_file(file_path, key, delete_original)
 
-def decrypt_folder(folder_path, key):
+def decrypt_folder(folder_path, key, delete_encrypted=False):
     """
     Decrypts all encrypted files in a folder.
     """
@@ -73,9 +79,9 @@ def decrypt_folder(folder_path, key):
         for file in files:
             if file.endswith('.enc'):
                 file_path = os.path.join(root, file)
-                decrypt_file(file_path, key)
+                decrypt_file(file_path, key, delete_encrypted)
 
-def encrypt_specific_types(folder_path, key, file_types):
+def encrypt_specific_types(folder_path, key, file_types, delete_original=False):
     """
     Encrypts files of specific types in a folder.
     """
@@ -83,9 +89,9 @@ def encrypt_specific_types(folder_path, key, file_types):
         for file in files:
             if any(file.endswith(ext) for ext in file_types):
                 file_path = os.path.join(root, file)
-                encrypt_file(file_path, key)
+                encrypt_file(file_path, key, delete_original)
 
-def decrypt_specific_types(folder_path, key, file_types):
+def decrypt_specific_types(folder_path, key, file_types, delete_encrypted=False):
     """
     Decrypts encrypted files of specific types in a folder.
     """
@@ -93,7 +99,7 @@ def decrypt_specific_types(folder_path, key, file_types):
         for file in files:
             if file.endswith('.enc') and any(file.replace('.enc', '').endswith(ext) for ext in file_types):
                 file_path = os.path.join(root, file)
-                decrypt_file(file_path, key)
+                decrypt_file(file_path, key, delete_encrypted)
 
 def list_files(folder_path):
     """
@@ -129,24 +135,30 @@ def main():
 
     if choice == "1":
         file_path = input("Enter the file path: ")
-        encrypt_file(file_path, key)
+        delete_original = input("Delete original file after encryption? (yes/no): ").strip().lower() == 'yes'
+        encrypt_file(file_path, key, delete_original)
     elif choice == "2":
         file_path = input("Enter the encrypted file path: ")
-        decrypt_file(file_path, key)
+        delete_encrypted = input("Delete encrypted file after decryption? (yes/no): ").strip().lower() == 'yes'
+        decrypt_file(file_path, key, delete_encrypted)
     elif choice == "3":
         folder_path = input("Enter the folder path: ")
-        encrypt_folder(folder_path, key)
+        delete_original = input("Delete original files after encryption? (yes/no): ").strip().lower() == 'yes'
+        encrypt_folder(folder_path, key, delete_original)
     elif choice == "4":
         folder_path = input("Enter the folder path: ")
-        decrypt_folder(folder_path, key)
+        delete_encrypted = input("Delete encrypted files after decryption? (yes/no): ").strip().lower() == 'yes'
+        decrypt_folder(folder_path, key, delete_encrypted)
     elif choice == "5":
         folder_path = input("Enter the folder path: ")
         file_types = input("Enter file types to encrypt (comma-separated, e.g., .txt,.jpg): ").split(",")
-        encrypt_specific_types(folder_path, key, file_types)
+        delete_original = input("Delete original files after encryption? (yes/no): ").strip().lower() == 'yes'
+        encrypt_specific_types(folder_path, key, file_types, delete_original)
     elif choice == "6":
         folder_path = input("Enter the folder path: ")
         file_types = input("Enter file types to decrypt (comma-separated, e.g., .txt,.jpg): ").split(",")
-        decrypt_specific_types(folder_path, key, file_types)
+        delete_encrypted = input("Delete encrypted files after decryption? (yes/no): ").strip().lower() == 'yes'
+        decrypt_specific_types(folder_path, key, file_types, delete_encrypted)
     elif choice == "7":
         folder_path = input("Enter the folder path: ")
         list_files(folder_path)

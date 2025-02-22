@@ -75,6 +75,14 @@ def web_crawler(start_url):
         for js in js_files:
             print(f" - {js}")
 
+        # Extract other resources (e.g., XML, JSON, etc.)
+        print("\n[+] Other Resources Found:")
+        other_resources = [urljoin(start_url, link.get('href')) for link in soup.find_all('link', href=True) if link.get('rel') != "stylesheet"]
+        other_resources += [urljoin(start_url, script.get('src')) for script in soup.find_all('script', src=True)]
+        other_resources += [urljoin(start_url, source.get('src')) for source in soup.find_all(['source', 'track'], src=True)]
+        for resource in other_resources:
+            print(f" - {resource}")
+
         # Extract meta tags
         print("\n[+] Meta Information:")
         for meta in soup.find_all('meta'):
@@ -93,10 +101,10 @@ def web_crawler(start_url):
         download_path = "downloads"
         os.makedirs(download_path, exist_ok=True)
 
-        print("\n[?] Do you want to download all resources (Images, CSS, JavaScript)? (Y/N)")
+        print("\n[?] Do you want to download all resources (Images, CSS, JavaScript, Other Resources)? (Y/N)")
         choice = input().strip().lower()
         if choice == 'y':
-            for file_list in [images, css_files, js_files]:
+            for file_list in [images, css_files, js_files, other_resources]:
                 for file_url in file_list:
                     download_file(file_url, download_path)
 

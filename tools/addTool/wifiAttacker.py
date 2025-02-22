@@ -1,10 +1,24 @@
 import os
 import platform
+import subprocess
+
+def check_wifi_adapter(interface):
+    """Check if the Wi-Fi adapter is connected."""
+    try:
+        result = subprocess.run(['iwconfig', interface], capture_output=True, text=True)
+        if "no wireless extensions" in result.stdout:
+            return False
+        return True
+    except FileNotFoundError:
+        return False
 
 def wifi_attacker():
     system = platform.system()
     if system == "Linux":
         interface = input("Enter your Wi-Fi interface (e.g., wlan0): ")
+        if not check_wifi_adapter(interface):
+            print(f"[-] Wi-Fi adapter '{interface}' not found. Please connect a Wi-Fi adapter and try again.")
+            return
         print("Scanning for networks...")
         os.system(f"sudo airmon-ng start {interface}")
         os.system(f"sudo airodump-ng {interface}mon")

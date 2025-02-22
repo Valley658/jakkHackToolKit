@@ -4,9 +4,7 @@ bs4
 pyfiglet
 pycryptodome
 pycryptodomex
-requests
 bcrypt
-pynpu
 flask
 httpx
 colorama

@@ -27,8 +27,11 @@ def find_large_files(directory, size_limit):
     for root, dirs, files in os.walk(directory):
         for file in files:
             file_path = os.path.join(root, file)
-            if os.path.getsize(file_path) > size_limit:
-                print(f"[+] Large file: {file_path} ({os.path.getsize(file_path)} bytes)")
+            try:
+                if os.path.getsize(file_path) > size_limit:
+                    print(f"[+] Large file: {file_path} ({os.path.getsize(file_path)} bytes)")
+            except OSError as e:
+                print(f"[-] Error accessing file {file_path}: {e}")
 
 def search_file_by_name(directory, file_name):
     print(f"[*] Searching for file named '{file_name}' in {directory}...")
@@ -67,5 +70,8 @@ def main(directory):
     log_activity("scan_log.txt", f"Scan completed for {directory} on {current_platform}")
 
 if __name__ == "__main__":
-    directory_to_scan = input("Enter the directory to scan: ")
-    main(directory_to_scan)
+    directory_to_scan = input("Enter the directory to scan: ").strip()
+    if os.path.isdir(directory_to_scan):
+        main(directory_to_scan)
+    else:
+        print(f"[-] Invalid directory: {directory_to_scan}")
