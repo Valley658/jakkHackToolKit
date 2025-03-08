@@ -10,3 +10,13 @@ httpx
 colorama
 pystyle
 asyncio
+aiofiles
+aiohttp
+aiohttp[speedups]
+aiohttp-jinja2
+aiohttp-session
+aiohttp-swagger
+aiohttp-apispec
+aiohttp-cors
+aiohttp-debugtoolbar
+aiohttp-devtools

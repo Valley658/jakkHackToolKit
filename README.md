@@ -69,6 +69,8 @@ By using **JaxkHackToolKit**, you agree to the following terms:
 1. **Educational Use Only:** This toolkit is strictly for educational and ethical purposes. Unauthorized or malicious use is strictly prohibited.
 2. **Ethical Hacking Rules:** You will only use this toolkit on systems you own or have explicit permission to test.
 3. **Responsibility:** You are fully responsible for any misuse or illegal activities performed using this software.
+4. **Compliance with Laws:** You must comply with all applicable local, national, and international laws and regulations when using this toolkit.
+5. **No Warranty:** This toolkit is provided "as is" without any warranties of any kind. The authors and contributors disclaim all warranties, express or implied, including but not limited to the implied warranties of merchantability and fitness for a particular purpose.
 
 ### 🚨 Critical Warning 🚨
 
@@ -77,8 +79,9 @@ This toolkit must only be used for educational purposes and within ethical bound
 - Use this toolkit only on systems you own or have explicit permission to test.
 - Never use this toolkit for illegal purposes or to harm others.
 - Always adhere to legal and ethical guidelines.
+- Understand that any misuse of this toolkit can lead to criminal charges, civil liabilities, and severe penalties.
 
-**The authors and contributors bear no responsibility for any misuse or damages caused by this software.** Always follow the principles of ethical hacking.
+**The authors and contributors bear no responsibility for any misuse or damages caused by this software.** Always follow the principles of ethical hacking and ensure you have the necessary permissions before conducting any tests.
 
 ---
 
@@ -93,3 +96,5 @@ We welcome contributions! If you have ideas for new features, bug fixes, or impr
 - Ensure you have the necessary permissions before using this toolkit on any system.
 - Always stay updated with the latest cybersecurity practices and guidelines.
 - Use this toolkit responsibly and ethically to contribute positively to the cybersecurity community.
+- Be aware of the legal implications and risks associated with cybersecurity activities.
+- Regularly review and understand the laws and regulations in your jurisdiction regarding cybersecurity and ethical hacking.
